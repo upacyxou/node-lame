@@ -4,11 +4,14 @@ import {
     existsSync as fsExistsSync,
     readFile as fsReadFile,
     writeFile as fsWriteFile,
-    unlinkSync as fsUnlinkSync
+    unlinkSync as fsUnlinkSync,
+    mkdtempSync
 } from "fs";
 import { isBuffer as utilIsBuffer } from "util";
 import { spawn } from "child_process";
 import { EventEmitter } from "events";
+import { join } from "path";
+import { tmpdir } from "os";
 
 /**
  * Wrapper for Lame for Node
@@ -402,8 +405,7 @@ class Lame {
         type: "raw" | "encoded",
         progressType: "encode" | "decode"
     ): string {
-        const prefix = `${__dirname}/../.`;
-        let path = `${prefix}./temp/${type}/`;
+        let path = mkdtempSync(join(tmpdir(), 'engposts-cards'))
         let possible =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -417,7 +419,7 @@ class Lame {
             path += `.mp3`;
         }
 
-        if (!fsExistsSync(`${prefix}./temp/${path}`)) {
+        if (!fsExistsSync(path)) {
             return path;
         } else {
             return this.tempFilePathGenerator(type, progressType);

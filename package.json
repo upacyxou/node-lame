@@ -1,5 +1,5 @@
 {
-    "name": "node-lame",
+    "name": "@upacyxou/node-lame",
     "description": "LAME MP3 encoder for Node.js",
     "version": "1.2.2",
     "homepage": "https://github.com/devowlio/node-lame",
@@ -10,16 +10,9 @@
     "bugs": {
         "url": "https://github.com/devowlio/node-lame/issues"
     },
-    "author": {
-        "name": "Jan Karres",
-        "email": "mail@jankarres.com",
-        "url": "https://jankarres.com/"
-    },
+    "author": "Jan Karres <mail@jankarres.com> (https://jankarres.com/)",
     "contributors": [
-        {
-            "name": "devowl.io GmbH",
-            "email": "mail@devowl.io"
-        }
+        "devowl.io GmbH <mail@devowl.io>"
     ],
     "keywords": [
         "mp3",
@@ -36,7 +29,7 @@
     },
     "scripts": {
         "build": "tsc",
-        "test": "./node_modules/.bin/mocha"
+        "test": "mocha"
     },
     "files": [
         "lib/build/",
@@ -56,5 +49,10 @@
         "mocha": "~5.2.0",
         "ts-node": "~7.0.1",
         "typescript": "~3.1.6"
+    },
+    "main": "index.js",
+    "directories": {
+        "lib": "lib",
+        "test": "test"
     }
 }
